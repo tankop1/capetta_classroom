@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Vampire Wars";
+    src: url("assets/Vampire\ Wars\ Italic.otf")
+}
+
+:root {
+    --primaryColor: #B68C38;
+    --highlightColor: rgb(0, 181, 160);
+
+    --primaryBorderRadius: 50px;
+    --secondaryBorderRadius: 15px;
+    --smallBorderRadius: 5px;
+
+    --primaryFont: 'Roboto', sans-serif;
+    --secondaryFont: 'Vampire Wars';
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+/* ---------- COMPONENTS ---------- */
+
+a {
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0);
+    transition: text-decoration-color 300ms;
+    text-underline-offset: 5px;
+    color: black;
+}
+
+a:hover {
+    text-decoration-color: black;
+}
+
+/* ---------- LOADING SCREEN ---------- */
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--secondaryFont);
+    font-size: 6rem;
+    color: var(--primaryColor);
+    overflow: hidden;
+}
+
+#loading-screen div {
+    transform: rotate(-20deg);
+    width: 100%;
+    height: 100%;
+    transition: transform 500ms;
+}
+
+#loading-top, #loading-bottom {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transform: translateX(-1000px);
+}
+
+#loading-top {
+    animation: loadingTop 400ms 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+#loading-bottom {
+    align-items: flex-start;
+    transform: translateX(1000px);
+    animation: loadingBottom 400ms 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+#loading-top p, #loading-bottom p {
+    text-align: center;
+}
+
+@keyframes loadingTop {
+    0% {
+        transform: translateX(-1000px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes loadingBottom {
+    0% {
+        transform: translateX(1000px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+/* ---------- NAVIGATION ---------- */
+
+main {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%230FF'/%3E%3Cstop offset='1' stop-color='%23CF6'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23F00'/%3E%3Cstop offset='1' stop-color='%23FC0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='45.54'%3E%3Cpath transform='translate(-15.75 3.6) rotate(2.25 1409 581) scale(1.009)' d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='15.180000000000001' transform='translate(-9 9) rotate(2.7 800 450) scale(1.005)' cx='500' cy='100' r='40'/%3E%3Cpath transform='translate(8.1 -27) rotate(27 401 736) scale(1.005)' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='13.8'%3E%3Cpath transform='translate(54 -3.6) rotate(0.9 150 345) scale(0.991)' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='30.360000000000003' transform='translate(-36 -22.5) rotate(32.4 1089 759)' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='translate(-54 18) rotate(5.4 1400 132)' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");*/
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 350px;
+    height: 100%;
+    padding: 50px;
+}
+
+nav #logo {
+    font-family: var(--secondaryFont);
+    color: var(--primaryColor);
+    font-size: 3.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 350px;
+    width: 275px;
+    margin-top: 75px;
+}
+
+nav li {
+    display: flex;
+}
+
+nav li a span {
+    margin-right: 8px;
+}
+
+footer {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+}
+
+footer a {
+    color: var(--primaryColor);
+    text-decoration-color: #b68c3800;
+}
+
+footer a:hover {
+    text-decoration-color: #b68c38;
+}
+
+/* ---------- LINK GRID ---------- */
+
+main section {
+    width: calc(100% - 350px);
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 65px 150px 150px 50px;
+}
+
+#parent {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+}
+
+#parent a {
+    border-radius: 15px;
+    cursor: pointer;
+    background-position: center;
+    background-size: 500px;
+    box-shadow: 0px 0px 10px rgb(51, 51, 51);
+    transform: translateY(0px);
+    transition: background-size 400ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0px 0px 10px black;
+    text-decoration: none;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#parent a:hover {
+    background-size: 550px;
+}
+    
+#calendars {
+    grid-area: 1 / 1 / 2 / 3;
+    background-image: url(assets/calendar.jpg);
+}
+
+#videos {
+    grid-area: 2 / 1 / 3 / 3;
+    background-image: url(assets/videos.jpg);
+}
+
+#textbook {
+    grid-area: 3 / 3 / 4 / 5;
+    background-image: url(assets/textbooks.jpg);
+}
+
+#notes {
+    grid-area: 4 / 3 / 5 / 5;
+    background-image: url(assets/notes.jpg);
+}
+
+#answers {
+    grid-area: 1 / 3 / 3 / 4;
+    background-image: url(assets/answer\ key.jpg);
+}
+
+#worksheets {
+    grid-area: 1 / 4 / 3 / 5;
+    background-image: url(assets/worksheets.jpg);
+}
+
+#corrections {
+    grid-area: 3 / 1 / 5 / 2;
+    background-image: url(assets/corrections.jpg);
+}
+
+#afterparties {
+    grid-area: 3 / 2 / 5 / 3;
+    background-image: url(assets/afterparty.jpg);
+}
